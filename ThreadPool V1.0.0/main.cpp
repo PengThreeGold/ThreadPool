@@ -13,16 +13,16 @@ public:
 		, end_(end)
 	{}
 
-	// ÎÊÌâÒ»£ºÔõÃ´Éè¼Ærunº¯ÊýµÄ·µ»ØÖµ£¬¿ÉÒÔ±íÊ¾ÈÎÒâµÄÀàÐÍ
-	// Java Python ÀïÃæÓÐ ObjectÀà ÊÇËùÓÐÀàµÄ»ùÀà
-	// C++17ÐÂ±ê×¼ÖÐÓÐ AnyÀàÐÍ
+	// é—®é¢˜ä¸€ï¼šæ€Žä¹ˆè®¾è®¡runå‡½æ•°çš„è¿”å›žå€¼ï¼Œå¯ä»¥è¡¨ç¤ºä»»æ„çš„ç±»åž‹
+	// Java Python é‡Œé¢æœ‰ Objectç±» æ˜¯æ‰€æœ‰ç±»çš„åŸºç±»
+	// C++17æ–°æ ‡å‡†ä¸­æœ‰ Anyç±»åž‹
 
 	Any run()
 	{
-		// Mater - SlaveÏß³ÌÄ£ÐÍ£º´ÓÏß³Ì¼ÆËã£¬Ö÷Ïß³Ì»ã×Ü
-		std::cout << "tid: " << std::this_thread::get_id() << "begin!" << std::endl;
+		// Mater - Slaveçº¿ç¨‹æ¨¡åž‹ï¼šä»Žçº¿ç¨‹è®¡ç®—ï¼Œä¸»çº¿ç¨‹æ±‡æ€»
+		std::cout << "Thread: " << std::this_thread::get_id() << " Begin!" << std::endl;
 
-		std::this_thread::sleep_for(std::chrono::seconds(4));
+		// std::this_thread::sleep_for(std::chrono::seconds(2));
 
 		uLLong sum = 0;
 		for (uLLong i = begin_; i <= end_; ++i)
@@ -30,7 +30,7 @@ public:
 			sum += i;
 		}
 
-		std::cout << "tid: " << std::this_thread::get_id() << "end!" << std::endl;
+		std::cout << "Thread: " << std::this_thread::get_id() << " End!" << std::endl;
 		return sum;
 	}
 
@@ -42,7 +42,7 @@ private:
 int main()
 {
 	{
-		// ËÀËø²âÊÔ
+		// æ­»é”æµ‹è¯•
 		ThreadPool pool;
 		pool.setMode(PoolMode::MODE_CACHED);
 		pool.start(2);
