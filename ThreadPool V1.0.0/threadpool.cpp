@@ -40,6 +40,7 @@ ThreadPool::~ThreadPool()
 	std::cout << "ThreadPool has been exited !" << std::endl;
 }
 
+// 检查线程池的运行状态
 bool ThreadPool::checkRunningState() const
 {
 	return isPoolRunning_;
@@ -61,7 +62,7 @@ void ThreadPool::setTaskQueMaxThreshHold(int threshhold)
 	taskQueMaxThreshHold_ = threshhold;
 }
 
-// 设置
+// 设置线程池cached模式下线程阈值
 void ThreadPool::setThreadSizeThreshHold_(int threshHold)
 {
 	if (checkRunningState())
